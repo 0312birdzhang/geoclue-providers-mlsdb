@@ -892,7 +892,14 @@ QMap<QString, BoundingBox> countryBoundingBoxes()
     australia_bb.upperRight.lat = -9.133;
     australia_bb.upperRight.lon = 168.0;
     retn.insert(QLatin1String("Australia"), australia_bb);
-
+    
+    // China?
+    BoundingBox china_bb;
+    china_bb.lowerLeft.lat = 1.726;
+    china_bb.lowerLeft.lon = 74.794;
+    china_bb.upperRight.lat = 54.857;
+    china_bb.upperRight.lon = 146.875;
+    retn.insert(QLatin1String("China"), china_bb);
     return retn;
 }
 
@@ -908,6 +915,7 @@ QMap<QString, QVector<BoundingBox> > regionBoundingBoxes()
     QVector<BoundingBox> devel;
     devel << cbboxes.value(QLatin1String("Finland"))
           << cbboxes.value(QLatin1String("Australia"))
+          << cbboxes.value(QLatin1String("China"))
           << cbboxes.value(QLatin1String("India"));
     retn.insert(QLatin1String("Devel"), devel);
 
@@ -1301,7 +1309,7 @@ void printRegionHelp()
                     " to (double,double) latitude,longitude for all cells known"
                     " in the mls.csv within the bounding-box for that region.\n"
                     "One special region is the `Devel` region which contains just"
-                    " Finland, Australia and India.\n"
+                    " Finland, Australia, China and India.\n"
                     "Other available European regions:\n"
                     " - `Eastern_Europe` contains: Belarus, Bulgaria, Czech Republic, Hungary,"
                     " Moldova, Poland, Romania, Slovakia and Ukraine\n"
